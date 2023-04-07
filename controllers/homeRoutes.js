@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ["name"],
+                    attributes: ["username"],
                 }
             ]
         })
@@ -31,7 +31,7 @@ router.get("/post/:id", async (req, res) => {
     try{
         const postData = await Post.findByPk(req.params.id, {
             include: User,
-            attributes: ["name"],
+            attributes: ["username"],
         })
 //* The user has to be logged in in order for them to search for a post.
         const post = postData.get({ plain: true })
